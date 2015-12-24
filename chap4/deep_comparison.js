@@ -5,7 +5,7 @@ function deepEqual(objectA, objectB){
   }
   else if ((typeof(objectA) == "object" && objectA != null) &&
            (typeof(objectB) == "object" && objectB != null)){
-    if (objectA.length != objectB.length){
+    if (Object.keys(objectA).length != Object.keys(objectB).length){
       return false;}
     else{
       for (nodeA in objectA){
@@ -18,6 +18,9 @@ function deepEqual(objectA, objectB){
       }
     }
   }
+  else{
+    return false;
+  }
 }
 
 var obj = {here: {is: "an"}, object: 2};
@@ -27,3 +30,4 @@ console.log(deepEqual(obj, {here: 1, object: 2}));
 // → false
 console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
 // → true
+console.log(deepEqual(obj, {here: {is: "an"}, object: 2, tree: 3}))
