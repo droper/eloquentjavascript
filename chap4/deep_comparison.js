@@ -1,11 +1,19 @@
 function deepEqual(objectA, objectB){
+  // Deep equal comparison
+
+  // First the base case, if one of the objects is not an
+  // object or is null then use the vaue and type comparison.
   if ((typeof(objectA) != "object" && objectA != null) ||
       typeof(objectB) != "object" && objectB != null){
     return objectA === objectB;
   }
+  // if both objects have different number of properties.then
+  // they are different.
   else if (Object.keys(objectA).length != Object.keys(objectB).length){
     return false;
   }
+  // If both objects are objects and non null then iterate over one of them and
+  // try if the properties of one object are in the other. If not retrun false.
   else if ((typeof(objectA) == "object" && objectA != null) &&
            (typeof(objectB) == "object" && objectB != null)){
     for (nodeA in objectA){
