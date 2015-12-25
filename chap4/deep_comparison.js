@@ -13,7 +13,7 @@ function deepEqual(objectA, objectB){
     return false;
   }
   // If both objects are objects and non null then iterate over one of them and
-  // try if the properties of one object are in the other. If not retrun false.
+  // try if the properties of one object are in the other. If not return false.
   else if ((typeof(objectA) == "object" && objectA != null) &&
            (typeof(objectB) == "object" && objectB != null)){
     for (nodeA in objectA){
