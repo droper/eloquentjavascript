@@ -1,27 +1,24 @@
 function deepEqual(objectA, objectB){
-  if (typeof(objectA) != "object" ||
-      typeof(objectB) != "object"){
+  if ((typeof(objectA) != "object" && objectA != null) ||
+      typeof(objectB) != "object" && objectB != null){
     return objectA === objectB;
+  }
+  else if (Object.keys(objectA).length != Object.keys(objectB).length){
+    return false;
   }
   else if ((typeof(objectA) == "object" && objectA != null) &&
            (typeof(objectB) == "object" && objectB != null)){
-    if (Object.keys(objectA).length != Object.keys(objectB).length){
-      return false;}
-    else{
-      for (nodeA in objectA){
-        if (nodeA in objectB){
-          return deepEqual(objectA[nodeA], objectB[nodeA]);
-        }
-        else {
-          return false;
-        }
+    for (nodeA in objectA){
+      if (nodeA in objectB){
+        return deepEqual(objectA[nodeA], objectB[nodeA]);
+      }
+      else {
+        return false;
       }
     }
   }
-  else{
-    return false;
-  }
 }
+
 
 var obj = {here: {is: "an"}, object: 2};
 console.log(deepEqual(obj, obj));
